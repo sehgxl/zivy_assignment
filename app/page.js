@@ -5,6 +5,7 @@ export default function Home() {
   const [BoxOne, setBoxOne] = useState()
   const [BoxTwo, setBoxTwo] = useState()
   const [Loading, setLoading] = useState(true)
+  const [Error, setError] = useState(false)
 
   const getData = async () => {
     try {
@@ -28,6 +29,7 @@ export default function Home() {
       setLoading(false)
     } catch (errors) {
       setLoading(false)
+      setError(true)
       errors.forEach((error) => console.error(error))
     }
   }
@@ -37,14 +39,16 @@ export default function Home() {
   return (
     <main className="flex min-h-screen items-center justify-center">
       <section className="flex flex-col">
-        {Loading ? (
+        {Error ? (
+          <div>Sorry something went wrong, please try again</div>
+        ) : Loading ? (
           <div>Loading...</div>
         ) : (
           <>
-            <div className="border-2 border-violet-500 bg-blue-100 px-5 py-3">
+            <div className="border-2 border-violet-300 bg-blue-50 px-5 py-3">
               {BoxOne}
             </div>
-            <div className="mt-[50px] border-2 border-violet-500 bg-blue-100 px-5 py-3">
+            <div className="mt-[50px] border-2 border-violet-300 bg-blue-50 px-5 py-3">
               {BoxTwo}
             </div>
           </>

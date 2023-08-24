@@ -5,6 +5,7 @@ import Comment from "../componets/comment"
 export default function Comments() {
   const [Comments, setComments] = useState([])
   const [Loading, setLoading] = useState(true)
+  const [Error, setEror] = useState(false)
   const [index, setIndex] = useState(10)
   const initalComments = Comments.slice(0, index)
   const getComments = async () => {
@@ -16,6 +17,7 @@ export default function Comments() {
       setLoading(false)
     } catch (errors) {
       setLoading(false)
+      setEror(true)
       errors.forEach((error) => console.error(error))
     }
   }
@@ -26,7 +28,9 @@ export default function Comments() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4 sm:p-14">
       <section className=" flex flex-col items-center gap-4">
-        {Loading ? (
+        {Error ? (
+          <div>Sorry something went wrong, please try again</div>
+        ) : Loading ? (
           <div>Loading...</div>
         ) : (
           <>
