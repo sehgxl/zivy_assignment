@@ -24,7 +24,7 @@ export default function Comments() {
     getComments()
   }, [])
   return (
-    <main className="flex min-h-screen items-center justify-center p-4 sm:p-14">
+    <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4 sm:p-14">
       <section className=" flex flex-col items-center gap-4">
         {Loading ? (
           <div>Loading...</div>
